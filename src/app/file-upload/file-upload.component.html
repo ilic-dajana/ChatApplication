@@ -1,4 +1,21 @@
-<form (submit)="onSubmit()">
-    <input type="file" (change)="onFileSelected($event)">
-    <button type="submit">Upload</button>
-</form>
+
+<div *ngIf="loading" class="loader-overlay">
+    <div class="loader"></div>
+</div>
+<div class="container">
+    <div class="background"></div>
+    <div class="file-container">
+
+        <h2 class="text">Prepare .csv files with data you want to use to train your model. You can upload multiple files.</h2>
+       
+        <form (submit)="onSubmit()" class="upload-form">
+            <input type="file" (change)="onFileSelected($event)" accept=".csv" class="file-input">
+
+            <button type="submit" class="upload-button">Upload</button>
+        </form>
+
+        <h2 class="text">After you upload files, run training model with your own custom dataset!</h2>
+        <button type="button" (click)="startTrainingModel()" class="upload-button" >Start</button>
+        
+    </div>
+</div>

@@ -1,8 +1,9 @@
 /* styles.css */
 .button-container {
-    margin-top: 20px;
+    overflow-y: auto;
+    display: flex;
+    margin-top: 40%;
 }
-
 .redirect-button {
     padding: 10px 20px;
     background-color: #007bff;
@@ -14,4 +15,55 @@
 
 .redirect-button:hover {
     background-color: #0056b3;
+}
+
+.body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/smallama1.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+a {
+    color: blue;
+    /* Set the text color */
+    text-decoration: none;
+    /* Remove the default underline */
+    cursor: pointer;
+    /* Change cursor to pointer on hover */
+}
+
+a:hover {
+    color: darkblue;
+    /* Change text color on hover */
+}
+
+.home-container {
+    background-color: #f1f1f1;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 80%;
+    text-align: center;
 }

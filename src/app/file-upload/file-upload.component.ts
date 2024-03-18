@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { MetricsService } from '../home/metrics.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -10,19 +11,17 @@ import { HttpClientModule } from '@angular/common/http';
 export class FileUploadComponent implements OnInit {
 
   selectedFile: File | null = null;
-  constructor(private http: HttpClient) { }
+  loading = false;
+  constructor(private http: HttpClient, private metrics : MetricsService) { }
 
   ngOnInit(): void {
   }
 
   onFileSelected(event: any) {
-    console.log("1");
     this.selectedFile = event.target.files[0];
   }
 
   onSubmit() {
-
-    console.log("1");
     if (!this.selectedFile) {
       console.error('No file selected');
       return;
@@ -31,13 +30,28 @@ export class FileUploadComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.selectedFile);
     console.log("FormData" + formData);
-    this.http.post<any>('http://127.0.0.1:5000/get-file', formData).subscribe(
+    this.http.post<any>(environment.apiUrl + '/upload-file', formData).subscribe(
       response => {
         alert('Successfully uploaded file!');
-        console.log('File content:' + response.content);
+        this.metrics.getMetrics();
       },
       error => {
-        alert('wtf');
+        alert(error);
+        console.log('Error:' + error);
+      }
+    );
+  }
+
+  startTrainingModel(){
+    this.loading = true;
+     this.http.get<any>(environment.apiUrl+'train-model').subscribe(
+      response => {
+        alert(response.content);
+         this.loading = false;
+         this.metrics.getMetrics();
+      },
+      error => {
+         this.loading = false;
         console.log('Error:' + error);
       }
     );

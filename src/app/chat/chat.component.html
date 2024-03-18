@@ -7,12 +7,15 @@
         </div>
         <div class="input-area">
             <div class="input-container">
-                <input type="text" placeholder="Type a message..." #textInput (keydown.enter)="sendMessage(textInput)">
-                <button (click)="sendMessage(textInput)">
+                <input type="text" placeholder="Type a message..." #textInput (keydown.enter)="sendMessage(textInput)" [disabled]="loading">
+                <button (click)="sendMessage(textInput)" [disabled]="loading">
                     <img src="assets/send-icon.svg" alt="Send">
                 </button>
             </div>
         </div>
-
     </div>
+<div *ngIf="loading" class="loader-overlay">
+    <div class="loader"></div>
 </div>
+</div>
+

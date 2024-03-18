@@ -1,6 +1,18 @@
-<p>home works!</p>
-<div class="button-container">
-    <button class="redirect-button" (click)="redirectToUploadPage()">Go to Another Page</button>
-    <button class="redirect-button" (click)="redirectToChatPage()">Go to Another Page</button>
 
+
+<div class="container">
+    <div class="background"></div>
+    <div class="home-container">
+       
+        <h2>Welcome!</h2>
+   
+        <h2>Here you can download api documentation:</h2>
+        <a href="assets/api-documentation.pdf" download>Download API documentation</a>
+        
+        <h2>Here you can download metrics for application:</h2>
+        <a (click)="createFile()">Download application metrics</a>
+
+        <h2>Here you can download dataset .csv file for training:</h2>
+        <a href="assets/dataset.csv" download>Download dataset</a>
+    </div>   
 </div>

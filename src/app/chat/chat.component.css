@@ -6,7 +6,6 @@ html {
 }
 
 .container {
-    position: relative;
     height: 100vh;
 }
 
@@ -54,23 +53,18 @@ html {
     padding: 10px;
     border-radius: 10px;
     max-width: 70%;    
-    /* Adjust as needed */
 }
 
 .outgoing {
     
     background-color: #DCF8C6;
-    /* Color for outgoing messages */
-    align-self: flex-end;
-    /* Align outgoing messages to the right */
+    align-self: flex-start;
 }
 
 .incoming {
     
     background-color: #E5E5EA;
-    /* Color for incoming messages */
-    align-self: flex-start;
-    /* Align incoming messages to the left */
+    align-self: flex-end;
 }
 
 .input-area {
@@ -104,4 +98,37 @@ html {
 .input-container button img {
     width: 24px;
     height: 24px;
+}
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
